@@ -43,6 +43,8 @@ int main(int argc, char *argv[])
     newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen); //Accept new incoming socket connection from the client. Continuously runs until connection happens
     if (newsockfd < 0) 
         error("ERROR on accept");
+
+    printf("Client connected \n");
  
 
      while(1)
