@@ -53,11 +53,11 @@ int main(int argc, char *argv[])
         n = read(newsockfd,buffer,255);    //Read data from socket into the buffer
         if (n < 0) error("ERROR reading from socket");
         printf("Message received from client: %s\n",buffer);    //Display message from client
-        n = write(newsockfd,"I got your message",18);  //Send confirmation message back to client
-        if (n < 0) 
-        {
-            error("ERROR writing to socket");
-        }
+        // n = write(newsockfd,"I got your message",18);  //Send confirmation message back to client
+        // if (n < 0) 
+        // {
+        //     error("ERROR writing to socket");
+        // }
         
 
      }
