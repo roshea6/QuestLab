@@ -1,0 +1,8 @@
+# some operation on the payload of the packet
+# filter only a specific ip address
+if (ip.dst == '192.168.1.100') {
+	if (search(DATA.data, "1")) {
+		msg("Dropping Packet");
+		drop();
+	}
+}

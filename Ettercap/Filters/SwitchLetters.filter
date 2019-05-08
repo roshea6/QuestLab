@@ -1,0 +1,18 @@
+# some operation on the payload of the packet
+# filter only a specific ip address
+if (ip.dst == '192.168.1.100') {
+	if (search(DATA.data, "1")) {
+		msg("Found target data");
+		log(DATA.data, "/tmp/project_data_before_mod.log");
+		replace("1", "a");
+		replace("2", "b");
+		replace("3", "c");
+		replace("4", "d");
+		replace("5", "e");
+		replace("6", "f");
+		replace("7", "g");
+		replace("8", "h");
+		replace("9", "i");
+		log(DATA.data, "/tmp/project_data_after_mod.log");
+	}
+}
