@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
          fprintf(stderr,"ERROR, no port provided\n");
          exit(1);
      }
-     sockfd = socket(AF_INET, SOCK_STREAM, 0);  //socket() creates a new socket and assigns ti to sockfd var
+     sockfd = socket(AF_INET, SOCK_STREAM, 0);  //socket() creates a new socket and assigns it to sockfd var
      if (sockfd < 0) 
         error("ERROR opening socket");
      bzero((char *) &serv_addr, sizeof(serv_addr));
@@ -52,6 +52,13 @@ int main(int argc, char *argv[])
         bzero(buffer, 256); //Clear buffer in between new messages
         n = read(newsockfd,buffer,255);    //Read data from socket into the buffer
         if (n < 0) error("ERROR reading from socket");
+
+        else if(strncmp(buffer, "Client has disconnected", sizeof("Client has disconnected")) == 0) //If client sends disconnected message then break out of loop
+        {
+            printf("%s\n", buffer);
+            break;
+        }
+
         printf("Message received from client: %s\n",buffer);    //Display message from client
         // n = write(newsockfd,"I got your message",18);  //Send confirmation message back to client
         // if (n < 0) 
